@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<style>
+#card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -100px;
+    margin-top: -250px;
+    width: 200px;
+    height 500px;
+    /* 使用transition让transform和box-shadow渐变过渡 */
+    transition: transform 0.5s ease,box-shadow 0.2s;
+}
+
+#card:hover {
+    box-shadow: 4px 4px gray;
+    transform: scale(1.2);
+}
+#img {
+    width: 100%;
+    height: auto;
+    /*
+    不可以使用height: 100%;，图片会溢出
+    可以使用height: auto;和max-height: 100%;
+    */
+}
+</style>
+<div id="card">
+    <img id="img" src="beautifulscene.png" alt="图片" />
+</div>
+
+<script>
+</script>
+</body>
+</html>

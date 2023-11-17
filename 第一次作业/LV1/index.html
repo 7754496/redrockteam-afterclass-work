@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#cloud {
+    width: 100px;
+    height: 100px;
+}
+#box {
+    width: 120px;
+    height: 100px;
+    background: pink;
+}
+
+#input>input {
+    width: 200px;
+}
+#log-in {
+    margin-top: 20px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+#log-in>div,#log-in>div>div {
+    border: solid black 1px;
+}
+
+#log-in>.item {
+    height: 40px;
+}
+#log-in>.item>div {
+    display: inline-block;
+}
+#log-in>.item>.first {
+    width: 50px;
+}
+#log-in>.item>.bottom{
+    margin-left: 30%;
+    width: 100px;
+}
+#log-in>.item>.bottom>.right {
+    float: right;
+}
+
+.text-center {
+    text-align: center;
+}
+/*
+忘了怎么居中了，直接硬搞了
+*/
+.center-align {
+   margin-left: 10%;
+}
+</style>
+
+<h2>二级标题</h1>
+<p>段落</p>
+
+<h3>三级标题</h1>
+<p>段落</p>
+
+<img id="cloud" src="cloud.png" alt="云" />
+
+<div id="box">
+    A pink box with 120px width and 100px height.
+</div>
+
+<a target="_blank" href="https://www.baidu.com/">百度</a>
+
+<ul>
+    <li>无</li>
+    <li>序</li>
+    <li>列</li>
+    <li>表</li>
+</ul>
+<form>
+<div id="input">
+    <input type="text" placeholder="Please input something to test."/>
+    <button type="submit">提交</button>
+</div>
+</form>
+<div id="log-in">
+    <div class="item">
+        <div class="text-center first">
+            用户名
+        </div>
+        <div class="center-align">
+            <input type="text" value="114514"/>
+        </div>
+    </div>
+        <div class="item">
+        <div class="text-center first">
+            密码
+        </div>
+        <div class="center-align">
+            <input type="password"/>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bottom">
+            <button type="submit">
+                提交
+            </button>
+            <button type="submit" class="right">
+                重置
+            </button>
+        </div>
+    </div>
+</div>
+
+<p>For the next form,too lazy to do.</p>
+</head>
+
+<body>
+
+<script>
+</script>
+</body>
+</html>
