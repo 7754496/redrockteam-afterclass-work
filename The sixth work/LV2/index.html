@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lv2</title>
+</head>
+<body>
+    <div>
+        <b>请选择您的爱好</b>
+        <br/>
+    </div>
+    <div id="divlist">
+        <input type="checkbox" value="内卷">内卷
+        <input type="checkbox" value="疯狂内卷">疯狂内卷
+        <input type="checkbox" value="拼命内卷">拼命内卷
+        <input type="checkbox" value="使劲内卷">使劲内卷
+        <br/>
+        <input type="button" value="全选" onclick="selectAll()">
+        <input type="button" value="全不选" onclick="deselectAll()">
+        <input type="button" value="反选" onclick="invertSelection()">
+    </div>
+
+    <script>
+        function selectAll() {
+            const checkboxes = document.querySelectorAll("#divlist input[type='checkbox']");
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = true;
+            });
+        }
+
+        function deselectAll() {
+            const checkboxes = document.querySelectorAll("#divlist input[type='checkbox']");
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+        }
+
+        function invertSelection() {
+            const checkboxes = document.querySelectorAll("#divlist input[type='checkbox']");
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = !checkbox.checked;
+            });
+        }
+    </script>
+</body>
+</html>

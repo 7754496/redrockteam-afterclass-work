@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<style>
+  #input_space {
+      
+  }
+
+  #comment_space {
+      display: block;
+      width: 250px;
+      height: auto;
+  }
+  
+  .comment_card {
+      height: 50px;
+  }
+  .comment_card img {
+      float: left;
+      height: 100%;
+      width: auto;
+  }
+  .comment_card .comment_content {
+      height: 100%;
+      width: 50px;
+      float: left;
+      font-size: 8px;
+  }
+  .comment_card .delete {
+      margin: 0.5px;
+      padding: 0;
+      float: right;
+      height: 13px;
+      width: 20px;
+      font-size: 10px;
+      line-height: 100%;
+      text-align: center;
+      background: pink;
+  }
+  
+</style>
+
+<textarea name="comment" id="input_space" rows="5" cols="40"></textarea>
+<br/>
+<button type="submit" id="submitbutton">评论</button>
+
+<div id="comment_space">
+  <div class="comment_card">
+      <img src="leimu.png" alt=""/>
+      <div class="comment_content">
+          评论内容
+      </div>
+      <button class="delete">✖</button>
+  </div>
+</div>
+<!--
+<script>
+alert(8);
+</script>
+-->
+<script>
+  const submit=function(event){
+      console.log(1);
+      const input_space=document.getElementById("input_space")
+      const text=input_space.value;
+      const parseDiv=document.createElement("div");
+      parseDiv.innerHTML=`
+        <div class="comment_card">
+        <img src="leimu.png" alt=""/>
+        <div class="comment_content">${text}</div>
+        <button class="delete">✖</button>
+        </div>
+      `;
+      const comment_card=parseDiv.firstElementChild;
+      console.log(comment_card);
+      
+      const comment_space=document.getElementById("comment_space");
+      if(comment_space.children.length){
+          comment_space.insertBefore(comment_card,comment_space.firstChild);
+      }else {
+          comment_space.appendChild(comment_card);
+      }
+      
+      event.preventDefault();
+      event.stopPropagation();
+      input_space.value="";
+      
+      return false;
+  };
+  
+  document.getElementById("submitbutton").addEventListener("click",submit);
+  
+  const deleteComment=function(event){
+      if(event.target.nodeName!=="BUTTON") return;
+      const comment=event.target.parentNode;
+      comment.remove();
+  };
+  const input_space=document.getElementById("comment_space");
+  input_space.addEventListener("click",deleteComment);
+</script>
+</body>
+</html>
