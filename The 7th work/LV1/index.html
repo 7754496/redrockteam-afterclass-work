@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<style>
+#sqare_container {
+    background: gray;
+    height: 300px;
+    width: 300px;
+}
+
+.col {
+    height: 100px;
+}
+.ball {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    /*background: white;*/
+    border-radius: 50%;
+}
+
+
+</style>
+<div id="sqare_container">
+    <div class="col">
+      <div style="background:white;" class="ball"></div>
+    </div>
+    <div class="col">
+      <div style="background:red;" class="ball"></div>
+    </div>
+    <div class="col">
+      <div style="background:blue;" class="ball"></div>
+    </div>
+</div>
+<!--
+<script>
+  /*setTimeout嵌套*/
+  const balls=document.getElementsByClassName("ball");
+  /* 0~200px */
+  let left=0;
+  let index=0;
+  (function add(){
+      if(left>=200){
+          if(index>=2) return;
+          else {
+              index+=1;
+              left=0;
+          }
+      }
+      setTimeout(function(){
+          left+=20;
+          balls[index].style.left=left+"px";
+          add();
+      },300)
+  })();
+  
+</script>
+-->
+
+<!--
+<script>
+  /*Promise 链式调用*/
+  const balls=document.getElementsByClassName("ball");
+  /* 0~200px */
+  let left=0;
+  let index=0;
+  let Task=new Promise(function(resolve,reject){
+      resolve();
+  });
+  
+  const set=function(){
+      return new Promise(function(resolve,reject){
+          if(left>=200){
+              if(index>=2){
+                  resolve();
+                  return;
+              }
+              else {
+                  index+=1;
+                  left=0;
+              }
+          }
+          setTimeout(function(){
+              left+=20;
+              balls[index].style.left=left+"px";
+              Task.then(set);
+              resolve();
+          },300);        
+      });      
+  };
+  Task=Task.then(set);
+</script>
+-->
+<script>
+  /*async function*/
+  const balls=document.getElementsByClassName("ball");
+  /* 0~200px */
+  let left=0;
+  let index=0;
+  let needmove=true;
+  
+  const set=function(){
+      return new Promise(function(resolve,reject){
+          if(left>=200){
+              if(index>=2){
+                  needmove=false;
+                  resolve();
+                  return;
+              }
+              else {
+                  index+=1;
+                  left=0;
+              }
+          }
+          setTimeout(function(){
+              left+=20;
+              balls[index].style.left=left+"px";
+              resolve();
+          },300);        
+      });      
+  };
+  (async function move(){
+      while(needmove){
+          await set();
+      }
+  })();
+</script>
+
+</body>
+</html>
