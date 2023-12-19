@@ -66,9 +66,7 @@
   /* 0~200px */
   let left=0;
   let index=0;
-  let Task=new Promise(function(resolve,reject){
-      resolve();
-  });
+  let Task=Promise.resolve();
   
   const set=function(){
       return new Promise(function(resolve,reject){

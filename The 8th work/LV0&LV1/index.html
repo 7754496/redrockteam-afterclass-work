@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<style>
+</style>
+
+<script src="mobile_user_agent-10000.json.js"></script>
+<script>
+  const getRodomUser_agent=function(){    
+    return user_agents[Math.floor(Math.random()*user_agents.length)];
+  }
+  
+  fetch("https://api.github.com/users/7754496", {
+      method: "GET",
+      headers: {
+          "User-Agent":getRodomUser_agent()
+      }
+  })
+  .then((response) => response.json())
+  .then((data) => {
+      console.log("Success:", data);
+  })
+  .catch((error) => {
+      console.error("Error:", error);
+  });
+  
+  const data = { query: "主播是中国人吗？" };
+
+  fetch("http://東雪莲.中国:3001/auth/register", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log("Success:", data);
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+    });
+</script>
+</body>
+</html>
